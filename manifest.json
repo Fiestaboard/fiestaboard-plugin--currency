@@ -1,0 +1,120 @@
+{
+  "id": "currency",
+  "name": "Currency Exchange",
+  "version": "0.1.0",
+  "description": "Display live currency exchange rates using the Frankfurter API.",
+  "author": "FiestaBoard Team",
+  "icon": "banknote",
+  "category": "data",
+  "repository": "https://github.com/Fiestaboard/fiestaboard-plugin--currency",
+  "documentation": "README.md",
+  "min_refresh_seconds": 3600,
+  "settings_schema": {
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "title": "Enabled",
+        "default": false
+      },
+      "base": {
+        "type": "string",
+        "title": "Base Currency",
+        "description": "ISO 4217 currency code to convert from (e.g. USD).",
+        "default": "USD",
+        "minLength": 3,
+        "maxLength": 3
+      },
+      "targets": {
+        "type": "string",
+        "title": "Target Currencies",
+        "description": "Comma-separated ISO 4217 codes to show (e.g. EUR,GBP,JPY).",
+        "default": "EUR,GBP,JPY"
+      },
+      "refresh_seconds": {
+        "type": "integer",
+        "title": "Refresh Interval (seconds)",
+        "description": "How often to fetch rates (ECB updates once per business day).",
+        "default": 3600,
+        "minimum": 1800
+      }
+    },
+    "required": [
+      "base"
+    ]
+  },
+  "variables": {
+    "groups": {
+      "rates": {
+        "label": "Exchange Rates"
+      }
+    },
+    "simple": {
+      "base": {
+        "description": "Base currency code",
+        "type": "string",
+        "max_length": 3,
+        "group": "rates",
+        "example": "USD"
+      },
+      "rate_1_code": {
+        "description": "First target currency code",
+        "type": "string",
+        "max_length": 3,
+        "group": "rates",
+        "example": "EUR"
+      },
+      "rate_1_value": {
+        "description": "Exchange rate for first target currency",
+        "type": "number",
+        "max_length": 8,
+        "group": "rates",
+        "example": "0.9234"
+      },
+      "rate_2_code": {
+        "description": "Second target currency code",
+        "type": "string",
+        "max_length": 3,
+        "group": "rates",
+        "example": "GBP"
+      },
+      "rate_2_value": {
+        "description": "Exchange rate for second target currency",
+        "type": "number",
+        "max_length": 8,
+        "group": "rates",
+        "example": "0.7912"
+      },
+      "rate_3_code": {
+        "description": "Third target currency code",
+        "type": "string",
+        "max_length": 3,
+        "group": "rates",
+        "example": "JPY"
+      },
+      "rate_3_value": {
+        "description": "Exchange rate for third target currency",
+        "type": "number",
+        "max_length": 8,
+        "group": "rates",
+        "example": "149.82"
+      },
+      "date": {
+        "description": "Date of the rates",
+        "type": "string",
+        "max_length": 12,
+        "group": "rates",
+        "example": "2026-05-01"
+      }
+    }
+  },
+  "screenshots": [
+    {
+      "src": "docs/board-display.png",
+      "alt": "Currency Exchange displayed on a Vestaboard",
+      "caption": "Example board output using the default template",
+      "primary": true
+    }
+  ],
+  "api_docs": "https://www.frankfurter.app/docs/"
+}
