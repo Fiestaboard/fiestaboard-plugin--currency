@@ -1,7 +1,7 @@
 {
   "id": "currency",
   "name": "Currency Exchange",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Display live currency exchange rates using the Frankfurter API.",
   "author": "FiestaBoard Team",
   "icon": "banknote",
@@ -118,47 +118,70 @@
   ],
   "api_docs": "https://www.frankfurter.app/docs/",
   "demo": {
-    "name": "Currency Exchange Demo",
-    "device_type": "flagship",
-    "config": {
-      "enabled": true,
-      "base": "USD",
-      "targets": "EUR,GBP,JPY",
-      "refresh_seconds": 3600
+    "flagship": {
+      "name": "Currency Exchange Demo",
+      "config": {
+        "enabled": true,
+        "base": "USD",
+        "targets": "EUR,GBP,JPY",
+        "refresh_seconds": 3600
+      },
+      "template": [
+        "Currency Exchange",
+        "{{currency.base}} rates {{currency.date}}",
+        "",
+        "{{currency.rate_1_code}}: {{currency.rate_1_value}}",
+        "{{currency.rate_2_code}}: {{currency.rate_2_value}}",
+        "{{currency.rate_3_code}}: {{currency.rate_3_value}}"
+      ],
+      "line_metadata": [
+        {
+          "alignment": "center",
+          "wrap": false
+        },
+        {
+          "alignment": "center",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        }
+      ]
     },
-    "template": [
-      "Currency Exchange",
-      "{{currency.base}} rates {{currency.date}}",
-      "",
-      "{{currency.rate_1_code}}: {{currency.rate_1_value}}",
-      "{{currency.rate_2_code}}: {{currency.rate_2_value}}",
-      "{{currency.rate_3_code}}: {{currency.rate_3_value}}"
-    ],
-    "line_metadata": [
-      {
-        "alignment": "center",
-        "wrap": false
-      },
-      {
-        "alignment": "center",
-        "wrap": false
-      },
-      {
-        "alignment": "left",
-        "wrap": false
-      },
-      {
-        "alignment": "left",
-        "wrap": false
-      },
-      {
-        "alignment": "left",
-        "wrap": false
-      },
-      {
-        "alignment": "left",
-        "wrap": false
-      }
-    ]
+    "note": {
+      "name": "Currency (Note)",
+      "template": [
+        "{{currency.base}} RATES",
+        "{{currency.rate_1_code}} {{currency.rate_1_value}}",
+        "{{currency.rate_2_code}} {{currency.rate_2_value}}"
+      ],
+      "line_metadata": [
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        },
+        {
+          "alignment": "left",
+          "wrap": false
+        }
+      ]
+    }
   }
 }
